@@ -58,7 +58,13 @@ public class SchTextChecker
   {
     //get the list of Names declared in this schema text
     List<NameTypePair> pairs = checkSchTextDeclPart(zSchText);
-
+int arraysize = pairs.size() ; 
+    System.out.print( arraysize +  "\n");
+    for(int x = 0; x < pairs.size(); x = x+1) {
+        System.out.print("value of : " + pairs.get(x).getName().toString() );
+        System.out.print("\n");
+     }
+    
     //add the pairs to the type environment
     typeEnv().add(pairs);
 

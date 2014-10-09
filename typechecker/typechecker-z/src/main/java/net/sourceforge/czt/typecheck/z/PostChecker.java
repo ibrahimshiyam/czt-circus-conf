@@ -110,10 +110,23 @@ public class PostChecker
   public ErrorAnn visitRefExpr(RefExpr refExpr)
   {
     ZName zName = refExpr.getZName();
+    
+    //checking for name
+    if(zName.getWord().toString().equals("S1"))
+    {    	
+    	
+    	System.out.println("S1 checking");
+    	
+    	if(zName.getZStrokeList().size() > 0)
+    	{
+        	System.out.println("S1 decorated with " + zName.getZStrokeList().get(0) + "\n");
+    	}
+    }
+
     UndeclaredAnn uAnn = zName.getAnn(UndeclaredAnn.class);
     ParameterAnn pAnn = refExpr.getAnn(ParameterAnn.class);
 
-    final boolean nameIsUndeclared = uAnn != null;
+    final boolean nameIsUndeclared = uAnn == null;
     if (nameIsUndeclared) {
       ErrorAnn errorAnn = createUndeclaredNameError(zName);
 
